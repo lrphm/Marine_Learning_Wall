@@ -29647,6 +29647,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3ef28b21dfe6add4891fb0e890f32ca1, type: 3}
   m_PrefabInstance: {fileID: 117329246}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &427581897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 125668, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
+  m_PrefabInstance: {fileID: 1191352617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435661901
 GameObject:
   m_ObjectHideFlags: 0
@@ -73781,7 +73786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.640067
+      value: -23.76
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -73789,11 +73794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.897354
+      value: 11.91
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.66814977
+      value: 0.6987052
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -73801,7 +73806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.74402684
+      value: 0.7154097
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -73813,11 +73818,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 96.151
+      value: 91.354
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467470, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467470, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
+      propertyPath: swimSpeedModifier
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
@@ -127190,6 +127203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObject: {fileID: 968255212}
+  clownfish: {fileID: 427581897}
+  positionToMoveTo: {x: -6, y: 0.5, z: 12}
 --- !u!4 &2094322229
 Transform:
   m_ObjectHideFlags: 0

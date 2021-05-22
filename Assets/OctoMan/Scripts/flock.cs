@@ -69,7 +69,7 @@ public class flock : MonoBehaviour {
 				ApplyRules();
 			}
 		}
-	//	transform.Translate(0, 0, Time.deltaTime * (speed*swimSpeedModifier));
+		//transform.Translate(0, 0, Time.deltaTime * (speed*swimSpeedModifier));
 	}
 
 	void ApplyRules()
