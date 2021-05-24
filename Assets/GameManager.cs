@@ -64,28 +64,28 @@ public class GameManager : MonoBehaviour
             bubble_Two.Stop();
             bubble_Two.Clear();
             SubEmitterDeath_Two.Play();
-            StartCoroutine(LerpPosition(positionToMoveSecondFish, 10));
+            // StartCoroutine(LerpPosition(positionToMoveSecondFish, 10));
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {  
             bubble_Three.Stop();
             bubble_Three.Clear();
             SubEmitterDeath_Three.Play();
-            StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
+            // StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {   
             bubble_Four.Stop();
             bubble_Four.Clear();
             SubEmitterDeath_Four.Play();
-            StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
+            //StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
         }
 
     }
 
     IEnumerator RefreshBubble(ParticleSystem particleSystem)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         Debug.Log("hello");
         particleSystem.Play();
     }

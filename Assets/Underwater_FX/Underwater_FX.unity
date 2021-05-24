@@ -146807,7 +146807,7 @@ MonoBehaviour:
   fishTwo: {fileID: 2072064397}
   fishThree: {fileID: 0}
   fishFour: {fileID: 0}
-  positionToMoveTo: {x: -5, y: 0.5, z: 10.5}
+  positionToMoveFirstFish: {x: 14, y: -1, z: -7}
 --- !u!4 &2094322229
 Transform:
   m_ObjectHideFlags: 0
