@@ -78752,43 +78752,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.76
+      value: -23.76782
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4972639
+      value: 0.49815294
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.91
+      value: 11.955595
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6978382
+      value: 0.70678514
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.034797985
+      value: 0.034346316
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7145219
+      value: 0.7056731
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.035629924
+      value: -0.03606552
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.709
+      value: 5.708
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.354
+      value: 89.903
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.144
       objectReference: {fileID: 0}
     - target: {fileID: 11467470, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: maxSpeed
@@ -146807,7 +146807,7 @@ MonoBehaviour:
   fishTwo: {fileID: 2072064397}
   fishThree: {fileID: 0}
   fishFour: {fileID: 0}
-  positionToMoveFirstFish: {x: 14, y: -1, z: -7}
+  positionToMoveFirstFish: {x: -5, y: 1, z: 11}
 --- !u!4 &2094322229
 Transform:
   m_ObjectHideFlags: 0
