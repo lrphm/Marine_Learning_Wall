@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
     //first fish position
     public Vector3 positionToMoveFirstFish;
 
+    //first fish position
+    public Vector3 positionToMoveSecondFish;
+    //first fish position
+    public Vector3 positionToMoveThirdFish;
+    //first fish position
+    public Vector3 positionToMoveFourthFish;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour
             bubble_One.Stop();
             bubble_One.Clear();
             SubEmitterDeath_One.Play();
-            StartCoroutine(LerpPosition(positionToMoveFirstFish, 10));
+            StartCoroutine(LerpPosition(positionToMoveFirstFish, 5));
             StartCoroutine(RefreshBubble(bubble_One));
         }
         else if (Input.GetKeyDown(KeyCode.W))
@@ -64,21 +70,21 @@ public class GameManager : MonoBehaviour
             bubble_Two.Stop();
             bubble_Two.Clear();
             SubEmitterDeath_Two.Play();
-            // StartCoroutine(LerpPosition(positionToMoveSecondFish, 10));
+            StartCoroutine(LerpPosition(positionToMoveSecondFish, 10));
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {  
             bubble_Three.Stop();
             bubble_Three.Clear();
             SubEmitterDeath_Three.Play();
-            // StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
+            StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {   
             bubble_Four.Stop();
             bubble_Four.Clear();
             SubEmitterDeath_Four.Play();
-            //StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
+            StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
         }
 
     }
