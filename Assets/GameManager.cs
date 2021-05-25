@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //first bubble
-    public ParticleSystem bubble_One;
+    public ParticleSystem bubbleOne;
     //second bubble
-    public ParticleSystem bubble_Two;
+    public ParticleSystem bubbleTwo;
     //third bubble
-    public ParticleSystem bubble_Three;
+    public ParticleSystem bubbleThree;
     //fourth bubble
-    public ParticleSystem bubble_Four;
+    public ParticleSystem bubbleFour;
 
     //death bubble one
     public ParticleSystem SubEmitterDeath_One;
@@ -59,32 +59,37 @@ public class GameManager : MonoBehaviour
         // clownfish.transform.Translate(0, 0, Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            bubble_One.Stop();
-            bubble_One.Clear();
+            bubbleOne.Stop();
+            bubbleOne.Clear();
             SubEmitterDeath_One.Play();
-            StartCoroutine(LerpPosition(positionToMoveFirstFish, 5));
-            StartCoroutine(RefreshBubble(bubble_One));
+            StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
+            StartCoroutine(RefreshBubble(bubbleOne));
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            bubble_Two.Stop();
-            bubble_Two.Clear();
+            bubbleTwo.Stop();
+            bubbleTwo.Clear();
             SubEmitterDeath_Two.Play();
-            StartCoroutine(LerpPosition(positionToMoveSecondFish, 10));
+            // StartCoroutine(LerpPosition(positionToMoveSecondFish, 10,clownfish));
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {  
-            bubble_Three.Stop();
-            bubble_Three.Clear();
+            bubbleThree.Stop();
+            bubbleThree.Clear();
             SubEmitterDeath_Three.Play();
-            StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
+            // StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {   
-            bubble_Four.Stop();
-            bubble_Four.Clear();
+            bubbleFour.Stop();
+            bubbleFour.Clear();
             SubEmitterDeath_Four.Play();
-            StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
+            // StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
+        } else if (Input.GetKey(KeyCode.Space)){
+            bubbleOne.Play();
+            bubbleTwo.Play();
+            bubbleThree.Play();
+            bubbleFour.Play();
         }
 
     }
@@ -92,20 +97,19 @@ public class GameManager : MonoBehaviour
     IEnumerator RefreshBubble(ParticleSystem particleSystem)
     {
         yield return new WaitForSeconds(15);
-        Debug.Log("hello");
         particleSystem.Play();
     }
 
     //move fish
-    IEnumerator LerpPosition(Vector3 targetPosition, float duration)
+    IEnumerator LerpPosition(Vector3 targetPosition, float duration, GameObject fishy)
     {
         {
             float time = 0;
-            Vector3 startPosition = clownfish.transform.position;
+            Vector3 startPosition = fishy.transform.position;
 
             while (time < duration)
             {
-                clownfish.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+                fishy.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }

@@ -24651,7 +24651,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1302045184681056, guid: d7689380619fd894c8508730e2bed11f, type: 3}
       propertyPath: m_Name
-      value: bubble_one
+      value: bubbleOne
       objectReference: {fileID: 0}
     - target: {fileID: 4891049361556014, guid: d7689380619fd894c8508730e2bed11f, type: 3}
       propertyPath: m_RootOrder
@@ -68959,7 +68959,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1291154762936078, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_Name
-      value: ButterflyFish_02
+      value: butterflyFish01
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_RootOrder
@@ -68979,43 +68979,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.91
+      value: -16.665209
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.51
+      value: 5.5499134
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 33.01
+      value: 32.570847
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4489601
+      value: -0.10126888
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12636204
+      value: 0.036706496
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.87125945
+      value: 0.9900796
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.15288705
+      value: -0.090221055
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 22.326
+      value: 9.859
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 126.491
+      value: 192.137
       objectReference: {fileID: 0}
     - target: {fileID: 4549055328906952, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 5.142
+      value: 5.297
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e1c71969af18e3479cdf46271a5a31d, type: 3}
@@ -78732,7 +78732,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 125668, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_Name
-      value: ClownFish2
+      value: clownfish
       objectReference: {fileID: 0}
     - target: {fileID: 456792, guid: cc3b165904ac23d44a67340f0785de4b, type: 3}
       propertyPath: m_RootOrder
@@ -122551,6 +122551,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1661042840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1261337293477732, guid: 434c4c512774b874d85a3e6ede9590ca, type: 3}
+  m_PrefabInstance: {fileID: 1957648569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1664262821
 GameObject:
   m_ObjectHideFlags: 0
@@ -141852,7 +141857,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1261337293477732, guid: 434c4c512774b874d85a3e6ede9590ca, type: 3}
       propertyPath: m_Name
-      value: ButterFlyFish_06
+      value: butterflyFish00
       objectReference: {fileID: 0}
     - target: {fileID: 4979870682795788, guid: 434c4c512774b874d85a3e6ede9590ca, type: 3}
       propertyPath: m_RootOrder
@@ -146795,17 +146800,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f5f71bca35b0c4589553cd7a4c5b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble_One: {fileID: 968255212}
-  bubble_Two: {fileID: 836945847}
-  bubble_Three: {fileID: 1257540566}
-  bubble_Four: {fileID: 1139071529}
+  bubbleOne: {fileID: 968255212}
+  bubbleTwo: {fileID: 836945847}
+  bubbleThree: {fileID: 1257540566}
+  bubbleFour: {fileID: 1139071529}
   SubEmitterDeath_One: {fileID: 684287161}
   SubEmitterDeath_Two: {fileID: 1225039968}
   SubEmitterDeath_Three: {fileID: 1324859251}
   SubEmitterDeath_Four: {fileID: 1754774567}
   clownfish: {fileID: 427581897}
-  fishTwo: {fileID: 2072064397}
-  fishThree: {fileID: 0}
+  fishTwo: {fileID: 1661042840}
+  fishThree: {fileID: 2072064397}
   fishFour: {fileID: 0}
   positionToMoveFirstFish: {x: -5, y: 1, z: 11}
   positionToMoveSecondFish: {x: 0, y: 0, z: 0}
