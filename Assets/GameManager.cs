@@ -28,28 +28,50 @@ public class GameManager : MonoBehaviour
     //first fish (clownfish)
     public GameObject clownfish;
 
-    //second fish (clownfish)
+    //second fish 
     public GameObject fishTwo;
 
-    //third fish (clownfish)
+    //third fish 
     public GameObject fishThree;
 
 
-    //fourth fish (clownfish)
+    //fourth fish 
     public GameObject fishFour;
 
-    //first fish position
-    public Vector3 positionToMoveFirstFish;
+    //first fish move position
+    private Vector3 positionToMoveFirstFish = new Vector3(-6, 1, 11);
 
-    //first fish position
-    public Vector3 positionToMoveSecondFish;
-    //first fish position
-    public Vector3 positionToMoveThirdFish;
-    //first fish position
-    public Vector3 positionToMoveFourthFish;
+    //second fish position
+    private Vector3 positionToMoveSecondFish = new Vector3(-4, 1, 16);
+    //third fish position
+    private Vector3 positionToMoveThirdFish = new Vector3(-5, -2, 17);
+    //fourth fish position
+    private Vector3 positionToMoveFourthFish = new Vector3(-4, -2, 11);
+
+
+    private Vector3 fishOneStartPos = new Vector3(-25, 0, 12);
+
+    private Vector3 fishTwoStartPos = new Vector3(-22, 3, 30);
+
+    private Vector3 fishThreeStartPos = new Vector3(-42, 4, 28);
+
+    private Vector3 fishFourStartPos = new Vector3(-27, -2, 15);
+
+    private bool fishOneSwim = false;
+
+    private bool fishTwoSwim = false;
+
+    private bool fishThreeSwim = false;
+
+    private bool fishFourSwim = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        clownfish.transform.position = fishOneStartPos;
+        fishTwo.transform.position = fishTwoStartPos;
 
     }
 
@@ -59,64 +81,123 @@ public class GameManager : MonoBehaviour
         // clownfish.transform.Translate(0, 0, Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            bubbleOne.Stop();
-            bubbleOne.Clear();
-            SubEmitterDeath_One.Play();
-            StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
-            StartCoroutine(RefreshBubble(bubbleOne));
+            Debug.Log(fishOneSwim);
+            if (fishOneSwim == false)
+            {
+                bubbleOne.Stop();
+                bubbleOne.Clear();
+                SubEmitterDeath_One.Play();
+                StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
+                fishOneSwim = true;
+                Debug.Log(fishOneSwim);
+                StartCoroutine(resetFishAndBubble(clownfish));
+            }
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            bubbleTwo.Stop();
-            bubbleTwo.Clear();
-            SubEmitterDeath_Two.Play();
-            // StartCoroutine(LerpPosition(positionToMoveSecondFish, 10,clownfish));
+            if (fishTwoSwim == false)
+            {
+                bubbleTwo.Stop();
+                bubbleTwo.Clear();
+                SubEmitterDeath_Two.Play();
+                StartCoroutine(LerpPosition(positionToMoveSecondFish, 5, fishTwo));
+                fishTwoSwim = true;
+                StartCoroutine(resetFishAndBubble(fishTwo));
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
-        {  
-            bubbleThree.Stop();
-            bubbleThree.Clear();
-            SubEmitterDeath_Three.Play();
-            // StartCoroutine(LerpPosition(positionToMoveThirdFish, 10));
+        {
+            if (fishThreeSwim == false)
+            {
+                bubbleThree.Stop();
+                bubbleThree.Clear();
+                SubEmitterDeath_Three.Play();
+                StartCoroutine(LerpPosition(positionToMoveThirdFish, 5, fishThree));
+                fishThreeSwim = true;
+                StartCoroutine(resetFishAndBubble(fishThree));
+            }
+          
         }
         else if (Input.GetKeyDown(KeyCode.R))
-        {   
-            bubbleFour.Stop();
-            bubbleFour.Clear();
-            SubEmitterDeath_Four.Play();
-            // StartCoroutine(LerpPosition(positionToMoveFourthFish, 10));
-        } else if (Input.GetKey(KeyCode.Space)){
+        {
+            if (fishFourSwim == false)
+            {
+                bubbleFour.Stop();
+                bubbleFour.Clear();
+                SubEmitterDeath_Four.Play();
+                StartCoroutine(LerpPosition(positionToMoveFourthFish, 5, fishFour));
+                fishFourSwim = true;
+                StartCoroutine(resetFishAndBubble(fishFour));
+            }
+
+        }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            moveFishtoStart();
             bubbleOne.Play();
             bubbleTwo.Play();
             bubbleThree.Play();
             bubbleFour.Play();
         }
 
-    }
-
-    IEnumerator RefreshBubble(ParticleSystem particleSystem)
-    {
-        yield return new WaitForSeconds(15);
-        particleSystem.Play();
-    }
-
-    //move fish
-    IEnumerator LerpPosition(Vector3 targetPosition, float duration, GameObject fishy)
-    {
-        {
-            float time = 0;
-            Vector3 startPosition = fishy.transform.position;
-
-            while (time < duration)
-            {
-                fishy.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
-                time += Time.deltaTime;
-                yield return null;
-            }
-            //transform.position = targetPosition;
         }
 
-      
+    IEnumerator resetFishAndBubble(GameObject fishy)
+    {
+
+        // variable to change before fish go home
+        yield return new WaitForSeconds(7);
+
+        if (fishy == clownfish)
+        {
+            fishy.transform.position = fishOneStartPos;
+            bubbleOne.Play();
+            fishOneSwim = false;
+        } else if (fishy == fishTwo)
+        {
+            fishy.transform.position = fishTwoStartPos;
+            bubbleTwo.Play();
+            fishTwoSwim = false;
+        } else if (fishy == fishThree)
+        {
+            fishy.transform.position = fishThreeStartPos;
+            bubbleThree.Play();
+            fishThreeSwim = false;
+        } else if (fishy == fishFour)
+         {
+            fishy.transform.position = fishFourStartPos;
+            bubbleFour.Play();
+            fishFourSwim = false;
+        }
     }
 
-}
+        //move all fish to starting position
+        void moveFishtoStart()
+        {
+        clownfish.transform.position = fishOneStartPos;
+        fishTwo.transform.position = fishTwoStartPos;
+        fishThree.transform.position = fishThreeStartPos;
+        fishFour.transform.position = fishFourStartPos;
+        }
+
+
+        //move fish
+        IEnumerator LerpPosition(Vector3 targetPosition, float duration, GameObject fishy)
+        {
+            {
+                float time = 0;
+                Vector3 startPosition = fishy.transform.position;
+
+                while (time < duration)
+                {
+                    fishy.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+                    time += Time.deltaTime;
+                    yield return null;
+                }
+                //transform.position = targetPosition;
+            }
+
+
+        }
+    }
+
