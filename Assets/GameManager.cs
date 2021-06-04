@@ -1,9 +1,13 @@
 using System.Collections;
+using System.IO.Ports;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    private SerialPort port;
+    //
     //first bubble
     public ParticleSystem bubbleOne;
     //second bubble
@@ -65,10 +69,29 @@ public class GameManager : MonoBehaviour
 
     private bool fishFourSwim = false;
 
+    private enum PortStatus {
+        NotFound, NotConnected, Connected
+    }
+
+    private PortStatus pStatus = PortStatus.NotFound;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        string[] portList = SerialPort.GetPortNames();
+
+        foreach (string p in portList) {
+            Debug.Log(p);
+        }
+
+        // We are going to assume that the first entry is the Arduino
+        // You may need to adjust this or hardcode the name if needed.
+        if (portList.Length > 0) {
+            //port = new SerialPort(portList[0], 9600);
+            port = new SerialPort("/dev/cu.usbmodem11101", 9600);
+            pStatus = PortStatus.NotConnected;
+        }
 
         clownfish.transform.position = fishOneStartPos;
         fishTwo.transform.position = fishTwoStartPos;
@@ -78,75 +101,151 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pStatus == PortStatus.NotConnected) {
+            OpenConnection();
+        } else if (pStatus == PortStatus.Connected) {
+
+            // We want to read from the port in a Try/Catch block to catch
+            // any potential timeout exceptions that are thrown when the
+            // reading times out at 50 milliseconds.
+
+            try {
+                char command = (char)port.ReadChar();
+
+                switch (command) {
+                    case '1':
+                        Debug.Log(fishOneSwim);
+                        if (fishOneSwim == false)
+                        {
+                            bubbleOne.Stop();
+                            bubbleOne.Clear();
+                            SubEmitterDeath_One.Play();
+                            StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
+                            fishOneSwim = true;
+                            Debug.Log(fishOneSwim);
+                            StartCoroutine(resetFishAndBubble(clownfish));
+                        }
+                        break;
+                    case '2':
+                        if (fishTwoSwim == false)
+                        {
+                            bubbleTwo.Stop();
+                            bubbleTwo.Clear();
+                            SubEmitterDeath_Two.Play();
+                            StartCoroutine(LerpPosition(positionToMoveSecondFish, 5, fishTwo));
+                            fishTwoSwim = true;
+                            StartCoroutine(resetFishAndBubble(fishTwo));
+                        }
+                        break;
+                    case '3':
+                        if (fishThreeSwim == false)
+                        {
+                            bubbleThree.Stop();
+                            bubbleThree.Clear();
+                            SubEmitterDeath_Three.Play();
+                            StartCoroutine(LerpPosition(positionToMoveThirdFish, 5, fishThree));
+                            fishThreeSwim = true;
+                            StartCoroutine(resetFishAndBubble(fishThree));
+                        }
+                        break;
+                    case '4':
+                        if (fishFourSwim == false) {
+                            bubbleFour.Stop();
+                            bubbleFour.Clear();
+                            SubEmitterDeath_Four.Play();
+                            StartCoroutine(LerpPosition(positionToMoveFourthFish, 5, fishFour));
+                            fishFourSwim = true;
+                            StartCoroutine(resetFishAndBubble(fishFour));
+                    }
+
+                        break;
+                    default:
+                        break;
+                }
+            } catch (TimeoutException e) {
+
+            }
+        }
+
         // clownfish.transform.Translate(0, 0, Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log(fishOneSwim);
-            if (fishOneSwim == false)
-            {
-                bubbleOne.Stop();
-                bubbleOne.Clear();
-                SubEmitterDeath_One.Play();
-                StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
-                fishOneSwim = true;
-                Debug.Log(fishOneSwim);
-                StartCoroutine(resetFishAndBubble(clownfish));
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (fishTwoSwim == false)
-            {
-                bubbleTwo.Stop();
-                bubbleTwo.Clear();
-                SubEmitterDeath_Two.Play();
-                StartCoroutine(LerpPosition(positionToMoveSecondFish, 5, fishTwo));
-                fishTwoSwim = true;
-                StartCoroutine(resetFishAndBubble(fishTwo));
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (fishThreeSwim == false)
-            {
-                bubbleThree.Stop();
-                bubbleThree.Clear();
-                SubEmitterDeath_Three.Play();
-                StartCoroutine(LerpPosition(positionToMoveThirdFish, 5, fishThree));
-                fishThreeSwim = true;
-                StartCoroutine(resetFishAndBubble(fishThree));
-            }
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     Debug.Log(fishOneSwim);
+        //     if (fishOneSwim == false)
+        //     {
+        //         bubbleOne.Stop();
+        //         bubbleOne.Clear();
+        //         SubEmitterDeath_One.Play();
+        //         StartCoroutine(LerpPosition(positionToMoveFirstFish, 5, clownfish));
+        //         fishOneSwim = true;
+        //         Debug.Log(fishOneSwim);
+        //         StartCoroutine(resetFishAndBubble(clownfish));
+        //     }
+        // }
+        // else if (Input.GetKeyDown(KeyCode.W))
+        // {
+        //     if (fishTwoSwim == false)
+        //     {
+        //         bubbleTwo.Stop();
+        //         bubbleTwo.Clear();
+        //         SubEmitterDeath_Two.Play();
+        //         StartCoroutine(LerpPosition(positionToMoveSecondFish, 5, fishTwo));
+        //         fishTwoSwim = true;
+        //         StartCoroutine(resetFishAndBubble(fishTwo));
+        //     }
+        // }
+        // else if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     if (fishThreeSwim == false)
+        //     {
+        //         bubbleThree.Stop();
+        //         bubbleThree.Clear();
+        //         SubEmitterDeath_Three.Play();
+        //         StartCoroutine(LerpPosition(positionToMoveThirdFish, 5, fishThree));
+        //         fishThreeSwim = true;
+        //         StartCoroutine(resetFishAndBubble(fishThree));
+        //     }
           
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (fishFourSwim == false)
-            {
-                bubbleFour.Stop();
-                bubbleFour.Clear();
-                SubEmitterDeath_Four.Play();
-                StartCoroutine(LerpPosition(positionToMoveFourthFish, 5, fishFour));
-                fishFourSwim = true;
-                StartCoroutine(resetFishAndBubble(fishFour));
-            }
+        // }
+        // else if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     if (fishFourSwim == false)
+        //     {
+        //         bubbleFour.Stop();
+        //         bubbleFour.Clear();
+        //         SubEmitterDeath_Four.Play();
+        //         StartCoroutine(LerpPosition(positionToMoveFourthFish, 5, fishFour));
+        //         fishFourSwim = true;
+        //         StartCoroutine(resetFishAndBubble(fishFour));
+        //     }
+
+        // }
+        // else if (Input.GetKey(KeyCode.Space))
+        // {
+        //     moveFishtoStart();
+        //     bubbleOne.Play();
+        //     bubbleTwo.Play();
+        //     bubbleThree.Play();
+        //     bubbleFour.Play();
+        // }
 
         }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            moveFishtoStart();
-            bubbleOne.Play();
-            bubbleTwo.Play();
-            bubbleThree.Play();
-            bubbleFour.Play();
-        }
 
-        }
+    // Open the connection to the Arduino. Here we also want to set
+    // the timeout to be 50 milliseconds so if there is no data being
+    // sent from the Arduino Unity will not block and wait until it gets
+    // data
+    private void OpenConnection() {
+        port.Open();
+        port.ReadTimeout = 50;
+        pStatus = PortStatus.Connected;
+    }
 
     IEnumerator resetFishAndBubble(GameObject fishy)
     {
 
         // variable to change before fish go home
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(30);
 
         if (fishy == clownfish)
         {
